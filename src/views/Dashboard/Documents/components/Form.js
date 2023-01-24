@@ -1,4 +1,4 @@
-import { Button, Icon, Input, InputGroup, Text, useColorModeValue, Flex, FormControl, FormLabel, FormHelperText, Drawer, useDisclosure, DrawerOverlay, DrawerContent, DrawerHeader, DrawerCloseButton, DrawerBody, DrawerFooter, Textarea, Select, toast, useToast } from "@chakra-ui/react"
+import { Button, Icon, Input, InputGroup, Text, useColorModeValue, Flex, FormControl, FormLabel, FormHelperText, Drawer, useDisclosure, DrawerOverlay, DrawerContent, DrawerHeader, DrawerCloseButton, DrawerBody, DrawerFooter, Textarea, Select, useToast } from "@chakra-ui/react"
 import SelectUI from "components/SelectUI/SelectUI";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form"
@@ -53,11 +53,8 @@ export const Form = ({isOpenDrawer = false, editData = false }) => {
         const file = e.target.files[0];
         setValue('file', file);
         const formData = new FormData();
-
         formData.append("file", file);
-
         clearErrors('file')
-
     }
     
     const onSubmit = data => {
@@ -89,10 +86,6 @@ export const Form = ({isOpenDrawer = false, editData = false }) => {
                
             })
     };
-
-    const mainTeal = useColorModeValue("teal.300", "teal.300");
-    const inputBg = useColorModeValue("white", "gray.800");
-    const inputSb = useColorModeValue("teal.300", "teal.800");
 
     const firstField = useRef()
 

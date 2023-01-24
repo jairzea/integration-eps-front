@@ -1,11 +1,13 @@
-import { Button, Icon, Input, InputGroup, Text, useColorModeValue, Flex } from "@chakra-ui/react"
+import { Button, Input, InputGroup, Text, useColorModeValue, Flex, useToast } from "@chakra-ui/react"
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { FaTimes } from "react-icons/fa";
+import { storeUsers } from "services/apis/user/userServices";
 
 export const Form = ({dataUser, cancelForm}) => {
     const { handleSubmit, setValue, register } = useForm();
-
+    const toast = useToast()
+    
     const { id, name, email, } = dataUser;
 
     useEffect(() => {
@@ -13,7 +15,28 @@ export const Form = ({dataUser, cancelForm}) => {
         setValue('email', email)
     },[dataUser])
 
-    const onSubmit = data => console.log(newUser, data);
+    const onSubmit = data => {
+        storeUsers(data)
+            .then(resp => 
+                toast({
+                    title: 'Todo va bien',
+                    description: resp?.message,
+                    status: 'success',
+                    position: 'top-right',
+                    duration: 9000,
+                    isClosable: true,
+                })
+            ).catch(err => 
+                toast({
+                    title: 'Ocurrio un error',
+                    description: err?.response?.data?.message,
+                    position: 'top-right',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true,
+                })
+            )
+    };
     
     const mainTeal = useColorModeValue("teal.300", "teal.300");
     const inputBg = useColorModeValue("white", "gray.800");
@@ -57,6 +80,7 @@ export const Form = ({dataUser, cancelForm}) => {
                     py="11px"
                     placeholder="Password"
                     borderRadius="inherit"
+                    type='password'
                 />
                 <Input
                     type="submit"

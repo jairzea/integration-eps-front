@@ -30,11 +30,6 @@ function Users() {
         data={users}
         hanledDataUser={hanledDataUser}
       />
-      <Projects
-        title={"Projects Table"}
-        captions={["Companies", "Budget", "Status", "Completion", ""]}
-        data={dashboardTableData}
-      />
     </Flex>
   );
 }
