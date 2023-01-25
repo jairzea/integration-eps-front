@@ -12,3 +12,7 @@ export const MODALITIES = (page) => `/modality?limit=${page}`;
 
 export const DOCUMENTS = "/documents";
 
+export const REPORTS_DOCUMENTS = "/documents/reports";
+
+export const GENERAL_REPORTS = "/documents/general_reports";
+

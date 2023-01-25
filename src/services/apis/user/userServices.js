@@ -16,7 +16,16 @@ export const getUsers = async (page = 0) => {
   return data
 }
 
+export const handleUsers = async (body, id) => {
+  return await !id ? storeUsers(body) : editUsers(body, id)
+}
+
 export const storeUsers = async (payload) => {
   const { data = {} } = await http.post(USERS, payload);
+  return data
+}
+
+export const editUsers = async (payload, id) => {
+  const { data = {} } = await http.put(USERS + '/' + id, payload);
   return data
 }

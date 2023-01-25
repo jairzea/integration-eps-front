@@ -10,7 +10,7 @@ import {
   PersonIcon,
   StatsIcon
 } from "components/Icons/Icons";
-import { IoDocument } from "react-icons/io5";
+import { IoDocument, IoLogOutSharp } from "react-icons/io5";
 import Documents from "views/Dashboard/Documents";
 
 var dashRoutes = [
@@ -39,9 +39,9 @@ var dashRoutes = [
   },
   {
     path: "/signin",
-    name: "Sign In",
+    name: "Cerrar Sesión",
     rtlName: "لوحة القيادة",
-    icon: <DocumentIcon color="inherit" />,
+    icon: <IoLogOutSharp color="inherit" />,
     component: SignIn,
     layout: "/auth",
   },

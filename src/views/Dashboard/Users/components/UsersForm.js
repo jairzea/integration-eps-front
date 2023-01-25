@@ -6,7 +6,7 @@ import { FaCube, FaPenFancy, FaPlus } from "react-icons/fa"
 import { IoDocumentAttach } from "react-icons/io5"
 import { Form } from "./Form"
 
-export const UsersForm = ({dataUser}) => {
+export const UsersForm = ({dataUser, reloadUsers}) => {
 
     const [ isNewUser, setIsNewUser ] = useState(false)
     const [ user, setUser ] = useState(false)
@@ -19,7 +19,7 @@ export const UsersForm = ({dataUser}) => {
         Boolean(dataUser.id) && setUser(dataUser)
     },[dataUser])
 
-    const childrenComponente = user ? (<Form dataUser={user} cancelForm={cancelForm} />) : (<Button
+    const childrenComponente = user ? (<Form dataUser={user} cancelForm={cancelForm} reloadUsers={reloadUsers} />) : (<Button
                      p='10px'
                      bg='transparent'
                      color='gray.500'
@@ -39,7 +39,7 @@ export const UsersForm = ({dataUser}) => {
 
     return (
         <Header
-            avatarImage={logo}
+            avatarImage={logo ?? true}
             name={name}
             email={email}
             tabs={[

@@ -19,9 +19,8 @@ const SalesOverview = ({ title, percentage, chart }) => {
               as='span'
               color={percentage > 0 ? "green.400" : "red.400"}
               fontWeight='bold'>
-              {`${percentage}%`} more
+              {'Historico año actual'}
             </Text>{" "}
-            in 2021
           </Text>
         </Flex>
       </CardHeader>

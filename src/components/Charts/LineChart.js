@@ -5,7 +5,6 @@ import { lineChartData, lineChartOptions } from "variables/charts";
 class LineChart extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       chartData: [],
       chartOptions: {},
@@ -13,9 +12,13 @@ class LineChart extends React.Component {
   }
 
   componentDidMount() {
+    this.timerID =  setTimeout(() => this.reload(), 1000);
+  }
+    
+  reload() {
     this.setState({
-      chartData: lineChartData,
-      chartOptions: lineChartOptions,
+      chartData: lineChartData(this.props),
+      chartOptions: lineChartOptions(this.props),
     });
   }
 

@@ -1,25 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Card from "components/Card/Card";
 import Chart from "react-apexcharts";
 import { barChartData, barChartOptions } from "variables/charts";
 
-class BarChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      chartData: [],
-      chartOptions: {},
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      chartData: barChartData,
-      chartOptions: barChartOptions,
-    });
-  }
-
-  render() {
+const BarChart = ({data}) => {
     return (
       <Card
         py="1rem"
@@ -29,15 +13,15 @@ class BarChart extends Component {
         position="relative"
       >
         <Chart
-          options={this.state.chartOptions}
-          series={this.state.chartData}
+          options={data && barChartOptions(data?.alls?.[1])}
+          series={data && barChartData(data?.alls?.[0])}
           type="bar"
           width="100%"
           height="100%"
         />
       </Card>
     );
-  }
+  
 }
 
 export default BarChart;

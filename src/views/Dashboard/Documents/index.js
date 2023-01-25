@@ -16,10 +16,14 @@ function Documents() {
   const [ documents, setDocuments ] = useState([]);
   const [ editDocuments, setEditDocuments ] = useState();
 
-  useEffect(() => {
+  const loadDocuments = () => {
     getDocuments().then( resp => {
       setDocuments(arrayMapper(resp)) 
     })
+  }
+
+  useEffect(() => {
+    loadDocuments()
   },[])
 
   const editDocument = (row) => (setEditDocuments(row), setIsOpenDrawer(!isOpenDrawer))
@@ -44,7 +48,7 @@ function Documents() {
 
   return (
     <>
-      <Form isOpenDrawer={isOpenDrawer} editData={editDocuments}/>
+      <Form isOpenDrawer={isOpenDrawer} editData={editDocuments} reloadDocuments={loadDocuments}/>
       <Flex direction='column'>
         <Header
           tabs={[

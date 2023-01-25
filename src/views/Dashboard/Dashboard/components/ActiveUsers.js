@@ -11,6 +11,7 @@ import {
   WalletIcon,
 } from "components/Icons/Icons.js";
 import React from "react";
+import { FaTh } from "react-icons/fa";
 import ChartStatistics from "./ChartStatistics";
 
 const ActiveUsers = ({ title, percentage, chart }) => {
@@ -26,39 +27,33 @@ const ActiveUsers = ({ title, percentage, chart }) => {
               {title}
             </Text>
             <Text fontSize='md' fontWeight='medium' color='gray.400'>
-              <Text
-                as='span'
-                color={percentage > 0 ? "green.400" : "red.400"}
-                fontWeight='bold'>
-                {percentage > 0 ? `+${percentage}%` : `-${percentage}%`}
-              </Text>{" "}
-              than last week
+              {'Historico año actual'}
             </Text>
           </Flex>
           <SimpleGrid gap={{ sm: "12px" }} columns={4}>
             <ChartStatistics
-              title={"Users"}
-              amount={"32,984"}
-              percentage={20}
-              icon={<WalletIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
+              title={"---"}
+              amount={"---"}
+              percentage={0}
+              icon={<FaTh h={"15px"} w={"15px"} color={iconBoxInside} />}
             />
             <ChartStatistics
-              title={"Clicks"}
-              amount={"2.42m"}
-              percentage={80}
-              icon={<RocketIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
+              title={"---"}
+              amount={"---"}
+              percentage={0}
+              icon={<FaTh h={"15px"} w={"15px"} color={iconBoxInside} />}
             />
             <ChartStatistics
-              title={"Sales"}
-              amount={"2,400$"}
-              percentage={30}
-              icon={<CartIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
+              title={"---"}
+              amount={"---"}
+              percentage={0}
+              icon={<FaTh h={"15px"} w={"15px"} color={iconBoxInside} />}
             />
             <ChartStatistics
-              title={"Items"}
-              amount={"320"}
-              percentage={40}
-              icon={<StatsIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
+              title={"---"}
+              amount={"---"}
+              percentage={0}
+              icon={<FaTh h={"15px"} w={"15px"} color={iconBoxInside} />}
             />
           </SimpleGrid>
         </Flex>

@@ -1,11 +1,11 @@
-export const barChartData = [
+export const barChartData = (data = []) =>[
   {
-    name: "Sales",
-    data: [330, 250, 110, 300, 490, 350, 270, 130, 425],
+    name: "Documentos",
+    data: data,
   },
 ];
 
-export const barChartOptions = {
+export const barChartOptions = (data = []) => ({
   chart: {
     toolbar: {
       show: false,
@@ -27,7 +27,7 @@ export const barChartOptions = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    categories: data,
     show: false,
     labels: {
       show: false,
@@ -81,20 +81,20 @@ export const barChartOptions = {
       },
     },
   ],
-};
+});
 
-export const lineChartData = [
+export const lineChartData = ({data}) => [
   {
-    name: "Mobile apps",
-    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+    name: "Resoluciones",
+    data: data?.resolutions?.[0],
   },
   {
-    name: "Websites",
-    data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+    name: "Otros documentos",
+    data: data?.others?.[0],
   },
 ];
 
-export const lineChartOptions = {
+export const lineChartOptions = ({data}) => ({
   chart: {
     toolbar: {
       show: false,
@@ -111,20 +111,7 @@ export const lineChartOptions = {
   },
   xaxis: {
     type: "datetime",
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
+    categories: data?.alls?.[1] ?? [],
     labels: {
       style: {
         colors: "#c8cfca",
@@ -161,4 +148,4 @@ export const lineChartOptions = {
     colors: ["#4FD1C5", "#2D3748"],
   },
   colors: ["#4FD1C5", "#2D3748"],
-};
+});

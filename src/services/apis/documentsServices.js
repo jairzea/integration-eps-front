@@ -1,8 +1,7 @@
-import { DOCUMENTS } from "constants/endpoints";
+import { DOCUMENTS, REPORTS_DOCUMENTS, GENERAL_REPORTS } from "constants/endpoints";
 import http from "services/https";
 
 export const handleDocuments = async (body, editData) => {
-  console.log('editData', editData)
   return await !editData ? storeDocuments(body) : editDocuments(body)
 }
 
@@ -29,3 +28,13 @@ export const getDocuments = async () => {
     const { data = {} } = await http.get(DOCUMENTS);
     return data;
   };
+
+export const getReports = async () => {
+  const { data = {} } = await http.get(REPORTS_DOCUMENTS);
+  return data;
+};
+
+export const getGeneralReports = async () => {
+  const { data = {} } = await http.get(GENERAL_REPORTS);
+  return data;
+};

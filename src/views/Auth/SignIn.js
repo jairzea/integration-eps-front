@@ -12,14 +12,51 @@ import {
   Switch,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 // Assets
 import signInImage from "assets/img/signInImage.png";
+import { login } from "../../services/apis/user/userServices"
+import { useHistory } from "react-router-dom";
 
 function SignIn() {
   // Chakra color mode
   const titleColor = useColorModeValue("#c55c5c", "red.500");
   const textColor = useColorModeValue("gray.400", "white");
+
+  const history = useHistory()
+  const toast = useToast()
+
+  const userLogin = () => {
+    const email = document.getElementById('email-user-login-protech').value
+    const password = document.getElementById('password-user-login-protech').value
+    console.log(email, password)
+    login({email, password})
+      .then(resp => {
+        console.log('resp', resp)
+        localStorage.setItem('access_token', resp?.token)
+          toast({
+            title: resp?.message,
+            position: 'top-right',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
+          return history.push("/admin/dashboard")
+        }
+      )
+      .catch(err => 
+        toast({
+          title: 'Ocurrio un error',
+          description: err?.response?.data?.message,
+          position: 'top-right',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
+      )
+  }
+  
   return (
     <Flex position='relative' mb='40px'>
       <Flex
@@ -57,6 +94,7 @@ function SignIn() {
                 Email
               </FormLabel>
               <Input
+                id="email-user-login-protech"
                 borderRadius='15px'
                 mb='24px'
                 fontSize='sm'
@@ -68,6 +106,7 @@ function SignIn() {
                 Contraseña
               </FormLabel>
               <Input
+                id="password-user-login-protech"
                 borderRadius='15px'
                 mb='36px'
                 fontSize='sm'
@@ -86,6 +125,7 @@ function SignIn() {
                 </FormLabel>
               </FormControl>
               <Button
+                onClick={userLogin}
                 fontSize='10px'
                 type='submit'
                 bg='#ba4545'

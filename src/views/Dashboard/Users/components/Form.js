@@ -2,12 +2,13 @@ import { Button, Input, InputGroup, Text, useColorModeValue, Flex, useToast } fr
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { FaTimes } from "react-icons/fa";
-import { storeUsers } from "services/apis/user/userServices";
+import { handleUsers } from "services/apis/user/userServices";
+import { formReset } from "utils/forms.utils";
 
-export const Form = ({dataUser, cancelForm}) => {
-    const { handleSubmit, setValue, register } = useForm();
+export const Form = ({dataUser, cancelForm, reloadUsers}) => {
+    const { handleSubmit, setValue, register, resetField } = useForm();
     const toast = useToast()
-    
+
     const { id, name, email, } = dataUser;
 
     useEffect(() => {
@@ -16,8 +17,8 @@ export const Form = ({dataUser, cancelForm}) => {
     },[dataUser])
 
     const onSubmit = data => {
-        storeUsers(data)
-            .then(resp => 
+        handleUsers(data, id)
+            .then(resp => (
                 toast({
                     title: 'Todo va bien',
                     description: resp?.message,
@@ -25,8 +26,10 @@ export const Form = ({dataUser, cancelForm}) => {
                     position: 'top-right',
                     duration: 9000,
                     isClosable: true,
-                })
-            ).catch(err => 
+                }),
+                reloadUsers(),
+                formReset(resetField)
+            )).catch(err => 
                 toast({
                     title: 'Ocurrio un error',
                     description: err?.response?.data?.message,

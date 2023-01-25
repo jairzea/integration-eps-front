@@ -20,4 +20,7 @@ export const formReset = (resetField) => {
     resetField('state')
     resetField('window_number')
     resetField('file')
+    resetField('name')
+    resetField('email')
+    resetField('password')
 }

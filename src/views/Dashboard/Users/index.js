@@ -13,17 +13,21 @@ function Users() {
   const [ users, setUsers ] = useState([]);
   const [ dataUser, setDataUser ] = useState([]);
 
-  useEffect(() => {
+  const loadUsers = () => {
     getUsers().then( resp => {
       setUsers(arrayMapper(resp)) 
     })
+  }
+
+  useEffect(() => {
+    loadUsers()
   },[])
 
   const hanledDataUser = ({...props}) => setDataUser(props);
 
   return (
     <Flex direction='column'>
-      <UsersForm dataUser={dataUser} />
+      <UsersForm dataUser={dataUser} reloadUsers={loadUsers}/>
       <UsersTable
         title={"Usuarios"}
         captions={["Usuario", "Status", ""]}

@@ -4,13 +4,35 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AuthLayout from "./layouts/Auth.js";
 import AdminLayout from "layouts/Admin.js";
+import { PrivateRouter } from "PrivateRouter.js";
+
+function PrivateRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isAuthenticated() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+            }}
+          />
+        )
+      }
+    />
+  );
+}
 
 ReactDOM.render(
   <HashRouter>
     <Switch>
       <Route path={`/auth`} component={AuthLayout} />
-      <Route path={`/admin`} component={AdminLayout} />
-      <Redirect from={`/`} to="/admin/dashboard" />
+      <PrivateRouter>
+        <Route path={`/admin`} component={AdminLayout } />
+        <Redirect from={`/`} to="/admin/dashboard" />
+      </PrivateRouter>
     </Switch>
   </HashRouter>,
   document.getElementById("root")

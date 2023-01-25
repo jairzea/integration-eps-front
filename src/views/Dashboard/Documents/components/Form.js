@@ -9,7 +9,7 @@ import { getProcedures } from "services/apis/procedureServices";
 import { getTypesDocuments } from "services/apis/typeDocumentsServices";
 import { formReset } from "utils/forms.utils";
 
-export const Form = ({isOpenDrawer = false, editData = false }) => {
+export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments }) => {
     const { handleSubmit, register, control, setValue, setError, formState, formState: { errors }, clearErrors, resetField } = useForm();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [ optionsDocuments, setOptionsDocuments ] = useState([])
@@ -68,7 +68,8 @@ export const Form = ({isOpenDrawer = false, editData = false }) => {
                     duration: 9000,
                     isClosable: true,
                   }),
-                formReset(resetField)
+                formReset(resetField),
+                reloadDocuments()
             ))
             .catch(err => {
                 const message = err?.response?.data?.message
