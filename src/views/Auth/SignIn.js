@@ -21,7 +21,7 @@ import { useHistory } from "react-router-dom";
 
 function SignIn() {
   // Chakra color mode
-  const titleColor = useColorModeValue("#c55c5c", "red.500");
+  const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
 
   const history = useHistory()
@@ -128,17 +128,17 @@ function SignIn() {
                 onClick={userLogin}
                 fontSize='10px'
                 type='submit'
-                bg='#ba4545'
+                bg='teal.300'
                 w='100%'
                 h='45'
                 mb='20px'
                 color='white'
                 mt='20px'
                 _hover={{
-                  bg: "red.500",
+                  bg: "teal.200",
                 }}
                 _active={{
-                  bg: "red.700",
+                  bg: "teal.400",
                 }}>
                 INICIAR SESIÓN
               </Button>

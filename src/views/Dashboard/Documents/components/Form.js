@@ -1,28 +1,26 @@
 import { Button, Icon, Input, InputGroup, Text, useColorModeValue, Flex, FormControl, FormLabel, FormHelperText, Drawer, useDisclosure, DrawerOverlay, DrawerContent, DrawerHeader, DrawerCloseButton, DrawerBody, DrawerFooter, Textarea, Select, useToast } from "@chakra-ui/react"
 import SelectUI from "components/SelectUI/SelectUI";
+import { Separator } from "components/Separator/Separator";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form"
 import { FaTimes } from "react-icons/fa";
 import { handleDocuments } from "services/apis/documentsServices";
-import { getModalities } from "services/apis/modalitieServices";
-import { getProcedures } from "services/apis/procedureServices";
-import { getTypesDocuments } from "services/apis/typeDocumentsServices";
 import { formReset } from "utils/forms.utils";
 
-export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments }) => {
+export const Form = ({
+    isOpenDrawer = false, 
+    editData = false, 
+    reloadDocuments, 
+    optionsDocuments, 
+    optionsProcedures,
+    optionsModalities }) => {
     const { handleSubmit, register, control, setValue, setError, formState, formState: { errors }, clearErrors, resetField } = useForm();
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [ optionsDocuments, setOptionsDocuments ] = useState([])
-    const [ optionsProcedures, setOptionsProcedures ] = useState([])
-    const [ optionsModalities, setOptionsModalities ] = useState([])
     const toast = useToast()
 
     useEffect(()=>{
         formReset(resetField)
         onOpen()
-        getTypesDocuments().then(resp => setOptionsDocuments(resp))
-        getModalities().then(resp => setOptionsProcedures(resp))
-        getProcedures().then(resp => setOptionsModalities(resp))
         editData && (
             setValue('type', editData?.type?.id),
             setValue('applicant_name', editData?.applicant_name),
@@ -135,7 +133,8 @@ export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments })
                             </FormControl>
                         </InputGroup>
                         <Text color='teal.400' align={'right'} fontSize='md' fontWeight='medium' mb={1}>Datos del solicitante</Text>
-                        <hr style={{ borderColor : 'red' }}/>
+                        <Separator style={{ backgroundColor : 'red' }}/>
+                        {/* <hr style={{ borderColor : 'red' }}/> */}
                         <InputGroup props mt={2} mb={2}>
                             <FormControl mr={2}>
                                 <FormLabel fontWeight='light'>*Nombre</FormLabel>
@@ -157,7 +156,8 @@ export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments })
                             </FormControl>
                         </InputGroup>
                         <Text color='teal.400' align={'right'} fontSize='md' fontWeight='medium' mb={1} mt={5}>Datos generales</Text>
-                        <hr style={{ borderColor : 'red' }}/>
+                        <Separator style={{ backgroundColor : 'red' }}/>
+                        {/* <hr style={{ borderColor : 'red' }}/> */}
                         <InputGroup props mt={2} mb={2}>
                             <FormControl mr={2}>
                                 <FormLabel fontWeight='light'>Trámite</FormLabel>
@@ -277,7 +277,8 @@ export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments })
                             </FormControl>
                         </InputGroup>
                         <Text color='teal.400' align={'right'} fontSize='md' fontWeight='medium' mb={1} mt={5}>Datos de la resolución</Text>
-                        <hr style={{ borderColor : 'red' }}/>
+                        <Separator style={{ backgroundColor : 'red' }}/>
+                        {/* <hr style={{ borderColor : 'red' }}/> */}
                         <InputGroup props mt={2} mb={2}>
                             <FormControl mr={2}>
                                 <FormLabel fontWeight='light'>N° de resolución</FormLabel>
@@ -312,7 +313,8 @@ export const Form = ({isOpenDrawer = false, editData = false, reloadDocuments })
                             </FormControl>
                         </InputGroup>
                         <Text color='teal.400' align={'right'} fontSize='md' fontWeight='medium' mb={1} mt={5}>Descripción y estado</Text>
-                        <hr style={{ borderColor : 'red' }}/>
+                        <Separator style={{ backgroundColor : 'red' }}/>
+                        {/* <hr style={{ borderColor : 'red' }}/> */}
                         <InputGroup props mt={2} mb={2}>
                             <FormControl mr={2}>
                                 <FormLabel fontWeight='light'>Descripción del proyecto</FormLabel>

@@ -5,6 +5,7 @@ export const handleDocuments = async (body, editData) => {
   return await !editData ? storeDocuments(body) : editDocuments(body)
 }
 
+
 export const storeDocuments = async (body) => {
   const { data = {} } = await http.post(DOCUMENTS, body,{
     headers: {
@@ -24,10 +25,10 @@ export const editDocuments = async (body) => {
   return data;
 };
 
-export const getDocuments = async () => {
-    const { data = {} } = await http.get(DOCUMENTS);
-    return data;
-  };
+export const getDocuments = async ({page = 0, value2 = '', value = '', field = '', criterion = ''}) => {
+  const { data = {} } = await http.get(`${DOCUMENTS}?limit=${page}&field=${field}&criterion=${criterion}&value=${value}&value2=${value2}`);
+  return data;
+};
 
 export const getReports = async () => {
   const { data = {} } = await http.get(REPORTS_DOCUMENTS);

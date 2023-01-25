@@ -1,5 +1,5 @@
 {
-	"name": "purity-dashboard-react",
+	"name": "upload-document-protech",
 	"version": "2.0.2",
 	"private": true,
 	"homepage": "https://demos.creative-tim.com/purity-ui-dashboard/#/",
@@ -27,6 +27,7 @@
 		"react-big-calendar": "0.33.2",
 		"react-bootstrap-sweetalert": "5.2.0",
 		"react-datetime": "3.1.1",
+		"react-chakra-pagination": "0.1.0",
 		"react-dom": "16.14.0",
 		"react-github-btn": "^1.2.1",
 		"react-hook-form": "^7.42.1",

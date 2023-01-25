@@ -27,7 +27,7 @@ function DashboardTableRow({editDocument, deleteDocument, ...props}) {
 
   return (
     <Tr>
-      <Td minWidth={{ sm: "250px" }} pl="0px">
+      type : (<Td minWidth={{ sm: "250px" }} pl="0px">
         <Flex alignItems="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <a href={`${process.env.REACT_APP_BACKEND_DOMAIN}/${path}`} target="_blank">
           <Avatar src={logo} backgroundColor='transparent' borderRadius="1px" h={"24px"} w={"24px"} me="18px"/>
@@ -41,7 +41,7 @@ function DashboardTableRow({editDocument, deleteDocument, ...props}) {
             {name}
           </Text>
         </Flex>
-      </Td>
+      </Td>)
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
           {internal_filing_number}

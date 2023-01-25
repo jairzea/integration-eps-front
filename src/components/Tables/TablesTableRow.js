@@ -11,15 +11,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-function TablesTableRow({ dataUser, ...props}) {
+const TablesTableRow = ({ dataUser, ...props}) => {
   const { id, logo, name, email, state, } = props;
   const textColor = useColorModeValue("gray.700", "white");
   const bgStates = useColorModeValue("gray.400", "#1a202c");
   const colorStates = useColorModeValue("white", "gray.400");
 
-  return (
-    <Tr>
-      <Td minWidth={{ sm: "250px" }} pl="0px">
+  return ({
+    user: (<Td minWidth={{ sm: "250px" }} pl="0px">
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Avatar src={logo} w="50px" borderRadius="12px" me="18px" />
           <Flex direction="column">
@@ -36,8 +35,8 @@ function TablesTableRow({ dataUser, ...props}) {
             </Text>
           </Flex>
         </Flex>
-      </Td>
-      <Td>
+      </Td>),
+      status: (<Td>
         <Badge
           bg={state === 1 ? "green.400" : bgStates}
           color={state === 1 ? "white" : colorStates}
@@ -47,8 +46,8 @@ function TablesTableRow({ dataUser, ...props}) {
         >
           {state ? 'Activo' : 'Inactivo'}
         </Badge>
-      </Td>
-      <Td>
+      </Td>),
+      actions: (<Td>
         <Button p="0px" bg="transparent" variant="no-hover" onClick={ () => dataUser({ id, logo, name, email, state, }) }>
           <Text
             fontSize="md"
@@ -59,9 +58,8 @@ function TablesTableRow({ dataUser, ...props}) {
             <EditIcon boxSize={7} />
           </Text>
         </Button>
-      </Td>
-    </Tr>
-  );
+      </Td>)
+});
 }
 
 export default TablesTableRow;

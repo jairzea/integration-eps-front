@@ -1,19 +1,16 @@
-import { Button, Icon, Input, InputGroup, Text, useColorModeValue, Flex } from "@chakra-ui/react"
+import { Button, Icon, Text, Flex } from "@chakra-ui/react"
 import Header from "components/Header/Header"
 import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
-import { FaCube, FaPenFancy, FaPlus } from "react-icons/fa"
-import { IoDocumentAttach } from "react-icons/io5"
+import { FaCube, FaPlus } from "react-icons/fa"
 import { Form } from "./Form"
 
 export const UsersForm = ({dataUser, reloadUsers}) => {
 
-    const [ isNewUser, setIsNewUser ] = useState(false)
     const [ user, setUser ] = useState(false)
 
     const cancelForm = () => setUser(false)
 
-    const { logo, name, email, } = user;
+    const { avatarGamer, name, email, } = user;
 
     useEffect( () => {
         Boolean(dataUser.id) && setUser(dataUser)
@@ -39,7 +36,7 @@ export const UsersForm = ({dataUser, reloadUsers}) => {
 
     return (
         <Header
-            avatarImage={logo ?? true}
+            avatarImage={avatarGamer ?? true}
             name={name}
             email={email}
             tabs={[

@@ -79,6 +79,7 @@ import {
                 w='80px'
                 h='80px'
                 borderRadius='15px'
+                backgroundColor="transparent"
               />)}
               <Flex direction='column' maxWidth='100%' my={{ sm: "14px" }}>
                 <Text
@@ -101,28 +102,6 @@ import {
               w={{ sm: "100%", md: "50%", lg: "auto" }}>
                 {tabs.map((info, i) => (
                     info?.child
-                //     <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
-                //     <Flex
-                //       align='center'
-                //       w={{ sm: "100%", lg: "135px" }}
-                //       bg={i === 0 && 'hsla(0,0%,100%,.3)'}
-                //       borderRadius='15px'
-                //       justifyContent='center'
-                //       py='10px'
-                //       boxShadow={i === 0 && 'inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'}
-                //       border={i === 0 && '1px solid gray.200'}
-                //       cursor='pointer'>
-                //       {info?.icon}
-                //       <Text
-                //         fontSize='xs'
-                //         color={textColor}
-                //         fontWeight='bold'
-                //         ms='6px'>
-                //         {info?.name}
-                //       </Text>
-                //     </Flex>
-                //   </Button>
-                  
                 ))}
             </Flex>
           </Flex>

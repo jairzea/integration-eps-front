@@ -1,0 +1,34 @@
+[
+    {
+        "id" : "=",
+        "name" : "Es igual"
+    },
+    {
+        "id" : "<>",
+        "name" : "No es igual"
+     },
+     {
+        "id" : ">=",
+        "name" : "Es mayo o igual"
+     },
+     {
+        "id" : "<=",
+        "name" : "Es menor o igual"
+     },
+     {
+        "id" : ">",
+        "name" : "Es mayor"
+     },
+     {
+        "id" : "<",
+        "name" : "Es menor"
+     },
+     {
+        "id" : "Between",
+        "name" : "Entre"
+     },
+     {
+        "id" : "like",
+        "name" : "Contiene"
+     }
+]

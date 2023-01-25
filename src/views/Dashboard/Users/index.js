@@ -25,12 +25,26 @@ function Users() {
 
   const hanledDataUser = ({...props}) => setDataUser(props);
 
+  const tableColumns = [
+    {
+      Header: "Usuario",
+      accessor: "user"
+    },
+    {
+      Header: "Status",
+      accessor: "status"
+    },
+    {
+      Header: "",
+      accessor: "actions"
+    },
+  ]
   return (
     <Flex direction='column'>
       <UsersForm dataUser={dataUser} reloadUsers={loadUsers}/>
       <UsersTable
         title={"Usuarios"}
-        captions={["Usuario", "Status", ""]}
+        captions={tableColumns}
         data={users}
         hanledDataUser={hanledDataUser}
       />

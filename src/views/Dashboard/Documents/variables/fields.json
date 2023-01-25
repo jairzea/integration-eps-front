@@ -1,0 +1,94 @@
+[
+    {
+        "id" : "type",
+        "name" : "Tipo de documento"
+    },
+    {
+        "id" : "procedure_id",
+        "name" : "Tramites"
+     },
+     {
+        "id" : "modality_id",
+        "name" : "Modalidad"
+     },
+     {
+        "id" : "filing_date",
+        "name" : "Fecha de radicación"
+     },
+     {
+        "id" : "internal_filing_number",
+        "name" : "Número de radicación"
+     },
+     {
+        "id" : "external_filing_number",
+        "name" : "Número externo de radicación"
+     },
+     {
+        "id" : "address",
+        "name" : "Dirección"
+     },
+     {
+        "id" : "neighborhood",
+        "name" : "Barrio"
+     },
+     {
+        "id" : "stratum",
+        "name" : "Estrato"
+     },
+     {
+        "id" : "use_of_property",
+        "name" : "Uso de propiedad"
+     },
+     {
+        "id" : "zone",
+        "name" : "Zona"   
+     },
+     {
+        "id" : "description",
+        "name" : "Descripción"
+     },
+     {
+        "id" : "resolution_number",
+        "name" : "Número de resolución"
+     },
+     {
+        "id" : "date_resolution",
+        "name" : "Fecha de resolución"
+     },
+     {
+        "id" : "window_number",
+        "name" : "Número de ventanilla único"
+     },
+     {
+        "id" : "enforceable",
+        "name" : "Ejecutable"
+     },
+     {
+        "id" : "state",
+        "name" : "Estado"
+     },
+     {
+        "id" : "real_estate_registration",
+        "name" : "Matricula inmobiliaria"
+     },
+     {
+        "id" : "cadastral_reference",
+        "name" : "Referencia Catastral"
+     },
+     {
+        "id" : "applicant_identification",
+        "name" : "Identificación de tramitante"
+     },
+     {
+        "id" : "applicant_name",
+        "name" : "Nombre de tramitante"
+     },
+     {
+        "id" : "created_at",
+        "name" : "Fecha de creación"
+     },
+     {
+        "id" : "updated_at",
+        "name" : "Fecha de actualización"
+     }
+]
