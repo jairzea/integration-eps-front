@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form"
 import { FaTimes } from "react-icons/fa";
 import { handleDocuments } from "services/apis/documentsServices";
+import { getModalitiesByProcedure } from "services/apis/modalitieServices";
 import { formReset } from "utils/forms.utils";
 
 export const Form = ({
@@ -12,10 +13,11 @@ export const Form = ({
     editData = false, 
     reloadDocuments, 
     optionsDocuments, 
-    optionsProcedures,
-    optionsModalities }) => {
+    optionsProcedures }) => {
     const { handleSubmit, register, control, setValue, setError, formState, formState: { errors }, clearErrors, resetField } = useForm();
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [ optionsModalities, setOptionsModalities ] = useState([])
+
     const toast = useToast()
 
     useEffect(()=>{
@@ -25,8 +27,8 @@ export const Form = ({
             setValue('type', editData?.type?.id),
             setValue('applicant_name', editData?.applicant_name),
             setValue('applicant_identification', editData?.applicant_identification),
-            setValue('modality_id', editData?.modalitie?.id),
-            setValue('procedure_id', editData?.procedure?.id),
+            setValue('modality_id', editData?.modality_id),
+            setValue('procedure_id', editData?.procedure_id),
             setValue('internal_filing_number', editData?.internal_filing_number),
             setValue('filing_date', editData?.filing_date),
             setValue('address', editData?.address),
@@ -72,11 +74,11 @@ export const Form = ({
             .catch(err => {
                 const message = err?.response?.data?.message
                 const newMessg = message?.split('/',2)
-                const field = newMessg[1]?.replaceAll(' ', '_')
-                setError(field, { type: "focus", message: 'Campo obligatorio' }, { shouldFocus: true})
+                const field = newMessg?.[1]?.replaceAll(' ', '_')
+                if(field) setError(field, { type: "focus", message: 'Campo obligatorio' }, { shouldFocus: true})
                 return toast({
                     title: 'Ocurrio un error',
-                    description: newMessg[0] ?? message,
+                    description: newMessg?.[0] ?? message,
                     position: 'top-right',
                     status: 'error',
                     duration: 9000,
@@ -93,6 +95,19 @@ export const Form = ({
         w:"465px",
         _focus:"{{borderColor: { mainTeal }}}",
         _active:"{{borderColor: { mainTeal }}}"
+    }
+
+    const onChangeProcedure = (selectedList) => {
+        let ids = selectedList.map(element => element?.id);
+        setValue('procedure_id', JSON.stringify(ids))
+        getModalitiesByProcedure(ids).then(resp => setOptionsModalities(resp))
+        clearErrors('procedure_id')
+    }
+
+    const onChangeModality = (selectedList) => {
+        let ids = selectedList.map(element => element?.id);
+        setValue('modality_id', JSON.stringify(ids))
+        clearErrors('modality_id')
     }
 
     return (
@@ -165,7 +180,11 @@ export const Form = ({
                                     control={control}
                                     placeholder='Seleccione un tipo de tramite'
                                     options={optionsProcedures}
-                                    name="procedure_id"/>
+                                    multi={true}
+                                    defaultValue={editData?.procedure}
+                                    onChangeMulti={onChangeProcedure}
+                                    onRemove={onChangeProcedure}
+                                    name="procedure"/>
                                     {errors.procedure_id && <p style={{ color: 'red' }}>{errors.procedure_id.message}</p>}
                                 
                             </FormControl>
@@ -175,7 +194,11 @@ export const Form = ({
                                     control={control}
                                     placeholder='Seleccione un tipo de modalidad'
                                     options={optionsModalities}
-                                    name="modality_id"/>
+                                    multi={true}
+                                    defaultValue={editData?.modality}
+                                    onChangeMulti={onChangeModality}
+                                    onRemove={onChangeModality}
+                                    name="modality"/>
                                     {errors.modality_id && <p style={{ color: 'red' }}>{errors.modality_id.message}</p>}
                             </FormControl>
                         </InputGroup>
@@ -303,8 +326,9 @@ export const Form = ({
                                 {errors.date_resolution && <p style={{ color: 'red' }}>{errors.date_resolution.message}</p>}
                             </FormControl>
                             <FormControl>
-                                <FormLabel fontWeight='light'>Ejecutoria</FormLabel>
+                                <FormLabel fontWeight='light'>Fecha de Ejecutoria</FormLabel>
                                 <Input
+                                    type='date'
                                     {...register("enforceable")}
                                     fontSize="xs"
                                     py="10px"

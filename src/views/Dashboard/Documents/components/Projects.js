@@ -10,6 +10,7 @@ import {
   MenuList,
   MenuItem,
   Button,
+  Badge,
 } from "@chakra-ui/react";
 import { Table } from "react-chakra-pagination";
 // Custom components
@@ -24,13 +25,12 @@ import { FaEllipsisV } from "react-icons/fa";
 import { BsTrash } from "react-icons/bs";
 import { EditIcon } from "@chakra-ui/icons";
 
-const Projects = ({editDocument, title, captions, data }) => {
+const Projects = ({editDocument, title, captions, data = [] }) => {
   const [page, setPage] = React.useState(1);
   const deleteDocument = (row) => alert(row)
-
   const textColor = useColorModeValue("gray.700", "white");
 
-  const tableData = data.map((row) => ({
+  const tableData = data?.map((row) => ({
     type: (<Td minWidth={{ sm: "250px" }} pl="0px">
             <Flex alignItems="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
               <a href={row.file_path} target="_blank">
@@ -68,14 +68,14 @@ const Projects = ({editDocument, title, captions, data }) => {
                   </Flex>
                 </Td>),
     modality: (<Td>
-                  <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-                    {row?.modalitie?.name}
-                  </Text>
+                  {row?.modality?.map(({name}) =>(
+                    <Badge colorScheme='green' borderRadius={9}>{name}</Badge>
+                  ))}
                 </Td>),
     procedure: (<Td>
-                  <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-                    {row?.procedure?.name}
-                  </Text>
+                  {row?.procedure?.map(({name}) =>(
+                    <Badge colorScheme='red' borderRadius={9}>{name}</Badge>
+                  ))}
                 </Td>),
     actions: (<Td>
                 <Menu w={10}>
@@ -84,7 +84,6 @@ const Projects = ({editDocument, title, captions, data }) => {
                   </MenuButton>
                   <MenuList w={10}>
                     <MenuItem onClick={() => editDocument(row)} icon={<EditIcon color={'teal.300'}/>}> Editar</MenuItem>
-                    <MenuItem onClick={() => deleteDocument(row)} icon={<BsTrash color="red" />}> Eliminar</MenuItem>
                   </MenuList>
                 </Menu>
               </Td>)

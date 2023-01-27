@@ -23,14 +23,13 @@ function Documents() {
   const [ optionsModalities, setOptionsModalities ] = useState([])
 
   useEffect(()=>{
-    getTypesDocuments().then(resp => setOptionsDocuments(resp))
-    getModalities().then(resp => setOptionsModalities(resp))
-    getProcedures().then(resp => setOptionsProcedures(resp))
-},[isOpenDrawer])
+      getTypesDocuments().then(resp => setOptionsDocuments(resp))
+      getModalities().then(resp => setOptionsModalities(resp))
+      getProcedures().then(resp => setOptionsProcedures(resp))
+  },[isOpenDrawer])
 
 
-  const loadDocuments = (data) => {
-    console.log('data', data)
+  const loadDocuments = (data = '') => {
     getDocuments(data).then( resp => {
       setDocuments(arrayMapper(resp)) 
     })
@@ -39,6 +38,7 @@ function Documents() {
   useEffect(() => {
     loadDocuments('')
   },[])
+
 
   const editDocument = (row) => (setEditDocuments(row), setIsOpenDrawer(!isOpenDrawer))
 
@@ -104,7 +104,6 @@ const tableColumns = [
       <Form
         optionsDocuments={optionsDocuments}
         optionsProcedures={optionsProcedures}
-        optionsModalities={optionsModalities}
         isOpenDrawer={isOpenDrawer} 
         editData={editDocuments} 
         reloadDocuments={loadDocuments}/>

@@ -11,7 +11,7 @@ export const signUpServices = async (payload) => {
   return data;
 };
 
-export const getUsers = async (page = 0) => {
+export const getUsers = async (page = 10000) => {
   const { data = {} } = await http.get(USERS + '?limit=' + page);
   return data
 }

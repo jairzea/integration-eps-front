@@ -16,7 +16,6 @@ export const storeDocuments = async (body) => {
 };
 
 export const editDocuments = async (body) => {
-  console.log('body', body)
   const { data = {} } = await http.post(DOCUMENTS + '/' + body?.id, body,{
     headers: {
         "Content-Type": "multipart/form-data",
@@ -25,8 +24,8 @@ export const editDocuments = async (body) => {
   return data;
 };
 
-export const getDocuments = async ({page = 0, value2 = '', value = '', field = '', criterion = ''}) => {
-  const { data = {} } = await http.get(`${DOCUMENTS}?limit=${page}&field=${field}&criterion=${criterion}&value=${value}&value2=${value2}`);
+export const getDocuments = async ({value2 = '', value = '', field = '', criterion = ''}) => {
+  const { data = {} } = await http.get(`${DOCUMENTS}?limit=${10000}&field=${field}&criterion=${criterion}&value=${value}&value2=${value2}`);
   return data;
 };
 

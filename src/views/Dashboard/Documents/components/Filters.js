@@ -42,13 +42,12 @@ const Filters = ({
 
         const valueField = getValues('field')
         const valueCriterion = getValues('criterion')
-        console.log('valueCriterion', valueCriterion)
 
         resetFieldsDefaultStatus()
 
         setIsBetween(valueCriterion === 'Between')
 
-        if (['created_at', 'updated_at', 'date_resolution', 'filing_date'].includes(valueField)) {
+        if (['enforceable', 'created_at', 'updated_at', 'date_resolution', 'filing_date'].includes(valueField)) {
             setType('date')
             return
         } 

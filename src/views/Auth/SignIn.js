@@ -30,10 +30,8 @@ function SignIn() {
   const userLogin = () => {
     const email = document.getElementById('email-user-login-protech').value
     const password = document.getElementById('password-user-login-protech').value
-    console.log(email, password)
     login({email, password})
       .then(resp => {
-        console.log('resp', resp)
         localStorage.setItem('access_token', resp?.token)
           toast({
             title: resp?.message,
@@ -114,7 +112,7 @@ function SignIn() {
                 placeholder='Your password'
                 size='lg'
               />
-              <FormControl display='flex' alignItems='center'>
+              {/* <FormControl display='flex' alignItems='center'>
                 <Switch id='remember-login' colorScheme='teal' me='10px' />
                 <FormLabel
                   htmlFor='remember-login'
@@ -123,7 +121,7 @@ function SignIn() {
                   fontWeight='normal'>
                   Recúerdame
                 </FormLabel>
-              </FormControl>
+              </FormControl> */}
               <Button
                 onClick={userLogin}
                 fontSize='10px'

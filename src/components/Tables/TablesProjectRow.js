@@ -22,7 +22,6 @@ import { BsTrash } from "react-icons/bs";
 function DashboardTableRow({editDocument, deleteDocument, ...props}) {
   const { data, path, logo, name, status, internal_filing_number, applicant_name, applicant_identification, modalitie, procedure } = props;
 
-  console.log('data', data)
   const textColor = useColorModeValue("gray.700", "white");
 
   return (

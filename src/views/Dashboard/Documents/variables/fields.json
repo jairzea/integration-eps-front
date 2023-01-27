@@ -61,7 +61,7 @@
      },
      {
         "id" : "enforceable",
-        "name" : "Ejecutable"
+        "name" : "Fecha de Ejecutable"
      },
      {
         "id" : "state",
