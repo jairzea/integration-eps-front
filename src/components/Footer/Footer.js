@@ -1,10 +1,8 @@
-/*eslint-disable*/
 import React from "react";
 import { Flex, Link, List, ListItem, Text } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 export default function Footer(props) {
-  // const linkTeal = useColorModeValue("teal.400", "red.200");=
   return (
     <Flex
       flexDirection={{
@@ -32,7 +30,6 @@ export default function Footer(props) {
           {"Hecho con ❤️ por "}
         </Text>
         <Link
-          // color={linkTeal}
           color="teal.400"
           href="https://www.protech.net.co"
           target="_blank"
@@ -41,7 +38,6 @@ export default function Footer(props) {
         </Link>
         &
         <Link
-          // color={linkTeal}
           color="teal.400"
           href="https://www.protech.net.co"
           target="_blank"

@@ -1,4 +1,3 @@
-// Chakra Imports
 import {
   Box,
   Button,
@@ -28,7 +27,6 @@ export default function Configurator(props) {
   const [switched, setSwitched] = useState(props.isChecked);
 
   const { colorMode, toggleColorMode } = useColorMode();
-  // Chakra Color Mode
   let fixedDisplay = "flex";
   if (props.secondary) {
     fixedDisplay = "none";

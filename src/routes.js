@@ -1,4 +1,3 @@
-// import
 import SignIn from "views/Auth/SignIn.js";
 import Users from "views/Dashboard/Users";
 import Dashboard from "views/Dashboard/Dashboard";
@@ -45,21 +44,5 @@ var dashRoutes = [
     component: SignIn,
     layout: "/auth",
   },
-  // {
-  //   name: "ACCOUNT PAGES",
-  //   category: "account",
-  //   rtlName: "صفحات",
-  //   state: "pageCollapse",
-  //   views: [
-  //     {
-  //       path: "/signin",
-  //       name: "Sign In",
-  //       rtlName: "لوحة القيادة",
-  //       icon: <DocumentIcon color="inherit" />,
-  //       component: SignIn,
-  //       layout: "/auth",
-  //     },
-  //   ],
-  // },
 ];
 export default dashRoutes;

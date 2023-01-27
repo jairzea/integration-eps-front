@@ -11,11 +11,11 @@ const SelectUI = ({defaultValue, control, name, placeholder, options = [], multi
             render={({ field: { onChange, onBlur, value, ref } }) => {
                 return (<>
                         {multi ? (<Multiselect
-                                        options={options} // Options to display in the dropdown
-                                        selectedValues={defaultValue} // Preselected value to persist in dropdown
-                                        onSelect={onChangeMulti} // Function will trigger on select event
-                                        onRemove={onRemove} // Function will trigger on remove event
-                                        displayValue="name" // Property name to display in the dropdown options
+                                        options={options} 
+                                        selectedValues={defaultValue}
+                                        onSelect={onChangeMulti}
+                                        onRemove={onRemove}
+                                        displayValue="name"
                                     />) : (<Select 
                                         name={name} 
                                         placeholder={placeholder}

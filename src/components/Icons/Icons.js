@@ -109,17 +109,6 @@ export const CreativeTimLogo = createIcon({
       </g>
     </g>
   ),
-
-  //   <chakra.svg
-  //   height="50px"
-  //   width="50px"
-  //   viewBox="0 0 100 100"
-  //   fill="none"
-  //   xmlns="http://www.w3.org/2000/svg"
-  //   color={fill}
-  //   {...props}
-  // >
-  // </chakra.svg>
 });
 
 export const CreditIcon = createIcon({
@@ -411,7 +400,6 @@ export const RocketIcon = createIcon({
 export const SettingsIcon = createIcon({
   displayName: "SettingsIcon",
   viewBox: "0 0 24 24",
-  // path can also be an array of elements, if you have multiple paths, lines, shapes, etc.
   path: (
     <g>
       <path d="M0,0h24v24H0V0z" fill="none" />
@@ -462,7 +450,6 @@ export const SpotifyLogo = createIcon({
 });
 
 export const SupportIcon = createIcon({
-  // Doesn't display the full icon without w and h being specified
   displayName: "BuildIcon",
   viewBox: "0 0 24 24",
   path: (

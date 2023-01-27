@@ -1,4 +1,3 @@
-// Chakra imports
 import {
     Avatar,
     Box,
@@ -17,7 +16,6 @@ import {
     email,
     tabs = [],
   }) => {
-    // Chakra color mode
     const textColor = useColorModeValue("gray.700", "white");
     const borderProfileColor = useColorModeValue(
       "white",
