@@ -13,7 +13,7 @@ import { getDocuments } from "services/apis/documentsServices";
 import Filters from "./components/Filters";
 import filterImg from "../../../assets/img/filter.png"
 
-function Documents() {
+function Information() {
 
   const [ isOpenDrawer, setIsOpenDrawer ] = useState();
   const [ documents, setDocuments ] = useState([]);
@@ -101,12 +101,12 @@ const tableColumns = [
 
   return (
     <>
-      <Form
+      {/* <Form
         optionsDocuments={optionsDocuments}
         optionsProcedures={optionsProcedures}
         isOpenDrawer={isOpenDrawer} 
         editData={editDocuments} 
-        reloadDocuments={loadDocuments}/>
+        reloadDocuments={loadDocuments}/> */}
       <Flex direction='column'>
         <Header
           avatarImage={filterImg}
@@ -116,11 +116,11 @@ const tableColumns = [
             icon: <FaCube w='100%' h='100%' />,
             child: childrenComponente
             }
-        ]}
+          ]}
         />
         <Projects
             editDocument={editDocument}
-            title={"Documentos"}
+            title={"Cajacopi"}
             captions={tableColumns}
             data={documents}
           />
@@ -130,4 +130,4 @@ const tableColumns = [
   );
 }
 
-export default Documents;
+export default Information;

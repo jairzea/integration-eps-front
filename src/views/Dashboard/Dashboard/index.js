@@ -34,19 +34,19 @@ export default function Dashboard() {
     <Flex flexDirection='column' pt={{ base: "120px", md: "75px" }}>
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
         <MiniStatistics
-          title={"Documentos"}
+          title={"Reporte 1"}
           amount={generalReports?.documents}
           percentage={0}
           icon={<DocumentIcon h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
         <MiniStatistics
-          title={"Resoluciones"}
+          title={"Reporte 2"}
           amount={generalReports?.resolutions}
           percentage={0}
           icon={<FaFileSignature h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
         <MiniStatistics
-          title={"Otros Documentos"}
+          title={"Reporte 3"}
           amount={generalReports?.others}
           percentage={0}
           icon={<IoDocumentTextSharp h={"24px"} w={"24px"} color={iconBoxInside} />}
@@ -65,12 +65,12 @@ export default function Dashboard() {
         gap='24px'
         mb={{ lg: "26px" }}>
         <ActiveUsers
-          title={"Documentos registrados"}
+          title={"Registros enviados"}
           percentage={0}
           chart={<BarChart data={reports}/>}
         />
         <SalesOverview
-          title={"Resoluciones Vs Otros Documentos"}
+          title={"Registros Cajacopi"}
           percentage={0}
           chart={<LineChart data={reports} />}
         />

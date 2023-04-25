@@ -10,7 +10,7 @@ import {
   StatsIcon
 } from "components/Icons/Icons";
 import { IoDocument, IoLogOutSharp } from "react-icons/io5";
-import Documents from "views/Dashboard/Documents";
+import Information from "views/Dashboard/Information";
 
 var dashRoutes = [
   {
@@ -30,10 +30,10 @@ var dashRoutes = [
   },
   {
     path: "/docs",
-    name: "Documentos",
+    name: "Cajacopi",
     icon: <IoDocument color="inherit" />,
     secondaryNavbar: true,
-    component: Documents,
+    component: Information,
     layout: "/admin",
   },
   {

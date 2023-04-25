@@ -1,12 +1,13 @@
 import { Button, Input, InputGroup, Text, useColorModeValue, Flex, useToast } from "@chakra-ui/react"
 import { useEffect } from "react"
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import { FaTimes } from "react-icons/fa";
 import { handleUsers } from "services/apis/user/userServices";
 import { formReset } from "utils/forms.utils";
 
 export const Form = ({dataUser, cancelForm, reloadUsers}) => {
-    const { handleSubmit, setValue, register, resetField } = useForm();
+    const methods = useForm({ defaultValues: { name: "" } });
+    const { handleSubmit, setValue, register, resetField } = methods
     const toast = useToast()
 
     const { id, name, email, } = dataUser;
@@ -46,6 +47,7 @@ export const Form = ({dataUser, cancelForm, reloadUsers}) => {
     const inputSb = useColorModeValue("teal.300", "teal.800");
 
     return (
+        <FormProvider {...methods} >
         <form onSubmit={handleSubmit(onSubmit)}>
             <InputGroup
                 borderRadius="15px"
@@ -57,16 +59,19 @@ export const Form = ({dataUser, cancelForm, reloadUsers}) => {
                     borderColor: { mainTeal },
                 }}
             >
+                    <Input
+                        inputName="name"
+                        bg={inputBg}
+                        {...register("name")}
+                        fontSize="xs"
+                        py="11px"
+                        placeholder="Nombres"
+                        borderRadius="inherit"
+                        mr={2}
+                    />
+
                 <Input
-                    bg={inputBg}
-                    {...register("name")}
-                    fontSize="xs"
-                    py="11px"
-                    placeholder="Nombres"
-                    borderRadius="inherit"
-                    mr={2}
-                />
-                <Input
+                    inputName="email"
                     mr={2}
                     bg={inputBg}
                     {...register("email")}
@@ -75,7 +80,9 @@ export const Form = ({dataUser, cancelForm, reloadUsers}) => {
                     placeholder="Email"
                     borderRadius="inherit"
                 />
+
                 <Input
+                    inputName="password"
                     mr={2}
                     bg={inputBg}
                     {...register("password")}
@@ -85,6 +92,7 @@ export const Form = ({dataUser, cancelForm, reloadUsers}) => {
                     borderRadius="inherit"
                     type='password'
                 />
+
                 <Input
                     type="submit"
                     mr={2}
@@ -105,5 +113,6 @@ export const Form = ({dataUser, cancelForm, reloadUsers}) => {
                 
             </InputGroup>
         </form>
+        </FormProvider>
     )
 }
